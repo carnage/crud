@@ -26,7 +26,8 @@ class AbstractCrudController extends AbstractActionController
         $crudService = $this->getCrudService();
 
         if ($this->getRequest()->isPost()) {
-            $form = $crudService->edit($this->entityName, $id, $this->params()->fromPost());
+            $fromPost = array_merge_recursive($this->params()->fromPost(), $this->params()->fromFiles());
+            $form = $crudService->edit($this->entityName, $id, $fromPost);
             if ($form === true) {
                 return $this->redirect()->toRoute('crud', ['controller' => $this->controllerRoute, 'action' => 'index']);
             }
