@@ -12,7 +12,7 @@ class Module
                     'crud' => __DIR__ . '/../view',
                 ),
             ),
-            'services' => [
+            'service_manager' => [
                 'factories' => [
                     'Crud\Service\Crud' => 'Crud\Service\Crud'
                 ]
